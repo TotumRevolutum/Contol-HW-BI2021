@@ -36,6 +36,13 @@ while True:
                 sys.exit()
             end = (input('Введите дату окончания периода в формате yyyy-mm-dd\n'))
 
+    detalization = {'IN': 0, 'OUT': 0,
+                    'INC_CALL': [{'number': 0, 'length': 0, 'sum': 0}, {'number': 0, 'length': 0, 'sum': 0}],
+                    'OUT_CALL': [{'number': 0, 'length': 0, 'sum': 0}, {'number': 0, 'length': 0, 'sum': 0}],
+                    'INC_SMS': {'number': 0, 'sum': 0},
+                    'OUT_SMS': [{'number': 0, 'sum': 0}, {'number': 0, 'sum': 0}],
+                    'INT': [{'number': 0, 'sum': 0}, {'number': 0, 'sum': 0}]}
+
     if start_date > data_end_time or end_date < data_start_time or start_date > end_date:
         print('Нет данных')
     elif start_date > end_date:
@@ -44,11 +51,10 @@ while True:
         for i in dataset:
             d = i['date'].split()
             d = list(map(int, d[0].split('-')))
-            if start_date <= datetime.date(d[0], d[1], d[2]) <= end_date:
-                if int(i['operation']) == ROAM_IN:
-                    mode = 1
-                elif int(i['operation']) == ROAM_OUT:
-                    mode = 0
-                else:
-                    add_info(i, detalization, mode)
+            if int(i['operation']) == ROAM_IN:
+                mode = 1
+            elif int(i['operation']) == ROAM_OUT:
+                mode = 0
+            elif start_date <= datetime.date(d[0], d[1], d[2]) <= end_date:
+                add_info(i, detalization, mode)
         print_detal(f, detalization, start_date, end_date)

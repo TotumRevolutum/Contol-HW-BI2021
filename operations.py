@@ -14,10 +14,3 @@ OUT_SMS_PR = [1, 5]  # Отправленное СМС
 INT_SES_PR = [0.2, 5]  # Сессия интернета
 MAX_SMS = 70  # длина 1 сообщения
 MAX_CALL = 60  # длина одного звонка
-
-detalization = {'IN': 0, 'OUT': 0,
-                'INC_CALL': [{'number': 0, 'length': 0, 'sum': 0}, {'number': 0, 'length': 0, 'sum': 0}],
-                'OUT_CALL': [{'number': 0, 'length': 0, 'sum': 0}, {'number': 0, 'length': 0, 'sum': 0}],
-                'INC_SMS': {'number': 0, 'sum': 0},
-                'OUT_SMS': [{'number': 0, 'sum': 0}, {'number': 0, 'sum': 0}],
-                'INT': [{'number': 0, 'sum': 0}, {'number': 0, 'sum': 0}]}
